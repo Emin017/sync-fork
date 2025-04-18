@@ -1,0 +1,30 @@
+//// SNIPPET:BUILD
+
+package build
+import mill._, scalalib._
+
+object `sync-fork` extends ScalaModule {
+  def scalaVersion = "3.3.1"
+  def AkkaVersion = "2.7.0"
+  def AkkaHttpVersion = "10.5.3"
+  def typeSafeConfigVersion = "1.4.2"
+
+  def scalacOptions = Seq("-feature")
+
+  def ivyDeps = Agg(
+    ivy"com.lihaoyi::scalatags:0.13.1",
+    ivy"com.lihaoyi::mainargs:0.6.2",
+    ivy"com.typesafe.akka::akka-actor-typed:${AkkaVersion}",
+    ivy"com.typesafe.akka::akka-stream:${AkkaVersion}",
+    ivy"com.typesafe.akka::akka-http:${AkkaHttpVersion}",
+    ivy"com.typesafe.akka::akka-http-spray-json:${AkkaHttpVersion}",
+    ivy"com.typesafe:config:${typeSafeConfigVersion}",
+    ivy"org.slf4j:slf4j-simple:1.7.36",
+    ivy"org.eclipse.jgit:org.eclipse.jgit:7.2.0.202503040940-r"
+  )
+
+  object test extends ScalaTests {
+    def ivyDeps = Agg(ivy"com.lihaoyi::utest:0.8.5")
+    def testFramework = "utest.runner.Framework"
+  }
+}
