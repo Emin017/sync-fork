@@ -31,7 +31,7 @@ object Config {
 
     given Conversion[Owner, String] = _.value
 
-    extension (t: Owner) def value: String = t
+    extension (o: Owner) def value: String = o
   }
 
   /** Repo is an opaque type representing a GitHub repository.
@@ -46,7 +46,7 @@ object Config {
 
     given Conversion[Repo, String] = _.value
 
-    extension (t: Repo) def value: String = t
+    extension (r: Repo) def value: String = r
   }
 
   /** Branch is an opaque type representing a GitHub branch.
@@ -61,7 +61,7 @@ object Config {
 
     given Conversion[Branch, String] = _.value
 
-    extension (t: Branch) def value: String = t
+    extension (b: Branch) def value: String = b
   }
 
   /** GithubConfig is an opaque type representing the configuration for a GitHub
